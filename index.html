@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<h1>Score Keeper</h1>
-<h2 id="score"><span id="player1">0</span> to <span id="player2">0</span></h2>
-<button id="player1point">Player 1 +</button>
-<button id="player2point">Player 2 +</button>
-<button id="reset">Reset</button>
+    <div class="container">
+        <h1 class="is-size-3 has-text-weight-bold">Score Keeper</h1>
+        <label for="numberSelect">Choose a number:</label>
+        <select id="numberSelect" name="number">
+            <option value="">--Select a number--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+
+        <h2 id="score"><span id="player1">0</span> to <span id="player2">0</span></h2>
+        <button class="button is-primary" id="player1point">Player 1 +</button>
+        <button class="button is-primary" id="player2point">Player 2 +</button>
+        <button class="button is-danger" id="reset">Reset</button>
+    </div>
 
 
     <script src="app.js"></script>
 </body>
+
 </html>

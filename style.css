@@ -1,8 +1,18 @@
 
-.winner {
+.green {
     color : green;
 }
 
-.losser {
+.red {
     color: red;
+}
+
+.container {
+    padding: 30px;
+    height: 100vh;
+    text-align: center;
+}
+
+h1 , h2 {
+    padding: 30px;
 }
