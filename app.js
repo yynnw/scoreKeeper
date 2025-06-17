@@ -1,55 +1,57 @@
+const p1 = {
+    score : 0,
+    button : document.querySelector('#player1point'),
+    display : document.querySelector('#player1'), 
+
+}
+
+const p2 = {
+    score : 0,
+    button : document.querySelector('#player2point'),
+    display : document.querySelector('#player2'), 
+
+}
+
+const reset = document.querySelector('#reset');
 const selected = document.querySelector('#numberSelect');
 
-const player1_score = document.querySelector('#player1');
-const player2_score = document.querySelector('#player2');
-
-let player1 = 0;
-let player2 = 0;
 let highScore = 5;
 let gameOver = false;
-const player1point = document.querySelector('#player1point');
-const player2point = document.querySelector('#player2point');
-const reset = document.querySelector('#reset');
+
+function updateScores(player, opponent) {
+    if (!gameOver) {
+        player.score++; 
+        player.display.innerText = player.score;
+        if (player.score === highScore) {
+            gameOver = true;
+            player.display.classList.add('green')
+            opponent.display.classList.add('red')
+        }
+        }
+}
 
 selected.addEventListener('change', function setHighScore() {
     resetScore();
     highScore = parseInt(this.value);
 })
 
-player1point.addEventListener('click', () => {
-    if (!gameOver) {
-        player1++; 
-        player1_score.innerText = player1;
-        if (player1 === highScore) {
-            gameOver = true;
-            player1_score.classList.add('green')
-            player2_score.classList.add('red')
-        }
-        }
-    
-    
+p1.button.addEventListener('click', () => {
+ updateScores(p1, p2)    
 });
 
-player2point.addEventListener('click', () => {
-    if (!gameOver) {
-        player2++; 
-        player2_score.innerText = player2;
-        if (player2 === highScore) {
-            gameOver = true;
-            player2_score.classList.add('green')
-            player1_score.classList.add('red')
-        }
-    }
+p2.button.addEventListener('click', () => {
+updateScores(p2, p1)
 });
 
 function resetScore() {
-    player1_score.innerText = 0; 
-    player2_score.innerText = 0; 
-    player1_score.classList.remove('red', 'green');
-    player2_score.classList.remove('red', 'green');
-    player1 = 0; 
-    player2 = 0;
     gameOver = false;
+    for (let p of [p1, p2]) {
+    p.display.innerText = 0; 
+    p.display.classList.remove('red', 'green');
+    p.score = 0; 
+    }
+   
+    
 }
 reset.addEventListener('click', resetScore)
 
